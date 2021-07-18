@@ -24,7 +24,12 @@ import {
 } from "react-icons/fi";
 import { NavItem, NavSubItem } from "./NavItem";
 
-export default function Sidebar({ sidebarSize, resizeSidebar }) {
+interface IProps {
+  sidebarSize: string;
+  resizeSidebar: any;
+}
+
+export default function Sidebar({ sidebarSize, resizeSidebar }: IProps) {
   return (
     <Flex
       as='nav'
