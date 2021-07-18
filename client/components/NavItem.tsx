@@ -16,21 +16,38 @@ interface INavItems {
   text: string;
   icon: IconType;
   to?: string;
+  sidebarSize?: string;
 }
 
-export const NavItem = ({ children, icon, text, to, ...props }: INavItems) => {
+export const NavItem = ({
+  children,
+  icon,
+  text,
+  to,
+  sidebarSize,
+  ...props
+}: INavItems) => {
   return (
     <Flex align='center' justify='flex-start' cursor='pointer'>
       <AccordionItem w='100%' border='none'>
         <Link href={to && `${to}`} _hover={{ textDecor: "none" }}>
           <AccordionButton display='flex' justifyContent='space-between'>
             <Flex align='center' justify='center'>
-              <Icon as={icon} fontSize='20px' color='white' />
-              <Text ml='8px' fontWeight='normal' fontSize='16px' color='white'>
-                {text}
-              </Text>
+              <Icon as={icon} fontSize='20px' color='gray.600' />
+
+              {sidebarSize == "large" && (
+                <Text
+                  ml='8px'
+                  fontWeight='normal'
+                  fontSize='16px'
+                  color='gray.600'
+                  noOfLines={1}
+                >
+                  {text}
+                </Text>
+              )}
             </Flex>
-            {children && <AccordionIcon />}
+            {children && sidebarSize == "large" && <AccordionIcon />}
           </AccordionButton>
         </Link>
         {children}
@@ -54,7 +71,7 @@ export const NavSubItem = ({ text, to }: IProps) => (
     fontWeight='light'
     _hover={{ textDecor: "none", background: "rgba(0, 0, 0, 0.1)" }}
   >
-    <Text w='100%' fontWeight='normal'>
+    <Text w='100%' fontWeight='normal' noOfLines={1} color='gray.600'>
       {text}
     </Text>
   </Link>

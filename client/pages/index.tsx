@@ -8,9 +8,8 @@ export default function Home() {
       <Head>
         <title>KEETS Board</title>
       </Head>
-      <Flex>
-        <Dashboard />
-      </Flex>
+
+      <Dashboard />
     </Flex>
   );
 }
